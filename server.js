@@ -19,7 +19,7 @@ app.use(cors(corsOptions));
 app.use("/projects", require("./Routes/projectRoutes"));
 app.use("/interests", require("./Routes/interestRoutes"));
 app.use("/skills", require("./Routes/skillsRoutes"));
-
+app.use("/blogs", require("./Routes/blogsRoutes"));
 app.post("/send-email", (req, res) => {
   const { name, email, subject, message } = req.body;
 
