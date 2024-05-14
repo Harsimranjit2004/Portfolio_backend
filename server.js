@@ -20,6 +20,7 @@ app.use("/projects", require("./Routes/projectRoutes"));
 app.use("/interests", require("./Routes/interestRoutes"));
 app.use("/skills", require("./Routes/skillsRoutes"));
 app.use("/blogs", require("./Routes/blogsRoutes"));
+app.use("/notes", require("./Routes/notesRoutes"));
 app.post("/send-email", (req, res) => {
   const { name, email, subject, message } = req.body;
 
