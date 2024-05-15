@@ -8,7 +8,7 @@ const blogsSchema = new mongoose.Schema({
   author: {
     type: String,
   },
-  image: {
+  imgUrl: {
     type: String,
     required: true,
   },

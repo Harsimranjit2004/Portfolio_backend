@@ -10,12 +10,12 @@ const getAllBlogs = asyncHandler(async (req, res) => {
 });
 
 const createBlogs = asyncHandler(async (req, res) => {
-  const { title, author, image, description, tags, content, createdAt } =
+  const { title, author, imgUrl, description, tags, content, createdAt } =
     req.body;
   const blog = await Blogs.create({
     title,
     author,
-    image,
+    imgUrl,
     description,
     tags,
     content,
@@ -28,7 +28,7 @@ const createBlogs = asyncHandler(async (req, res) => {
   }
 });
 const updateBlog = asyncHandler(async (req, res) => {
-  const { id, title, author, image, description, tags, content, createdAt } =
+  const { id, title, author, imgUrl, description, tags, content, createdAt } =
     req.body;
   const blog = await Blogs.findById(id);
   if (!blog) {
@@ -36,7 +36,7 @@ const updateBlog = asyncHandler(async (req, res) => {
   }
   blog.title = title;
   blog.author = author;
-  blog.image = image;
+  blog.imgUrl = imgUrl;
   blog.description = description;
   blog.tags = tags;
   blog.content = content;
