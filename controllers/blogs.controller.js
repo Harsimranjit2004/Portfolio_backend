@@ -10,8 +10,18 @@ const getAllBlogs = asyncHandler(async (req, res) => {
 });
 
 const createBlogs = asyncHandler(async (req, res) => {
-  const { title, author, imgUrl, description, tags, content, createdAt } =
-    req.body;
+  const {
+    title,
+    author,
+    imgUrl,
+    description,
+    tags,
+    content,
+    createdAt,
+    readingTime,
+    category,
+    tableContent,
+  } = req.body;
   const blog = await Blogs.create({
     title,
     author,
@@ -20,6 +30,9 @@ const createBlogs = asyncHandler(async (req, res) => {
     tags,
     content,
     createdAt,
+    readingTime,
+    category,
+    tableContent,
   });
   if (blog) {
     res.status(201).json({ message: "new blog added" });
@@ -28,8 +41,19 @@ const createBlogs = asyncHandler(async (req, res) => {
   }
 });
 const updateBlog = asyncHandler(async (req, res) => {
-  const { id, title, author, imgUrl, description, tags, content, createdAt } =
-    req.body;
+  const {
+    id,
+    title,
+    author,
+    imgUrl,
+    description,
+    tags,
+    content,
+    createdAt,
+    category,
+    readingTime,
+    tableContent,
+  } = req.body;
   const blog = await Blogs.findById(id);
   if (!blog) {
     return res.status(400).json({ message: "blog not exist" });
@@ -41,6 +65,9 @@ const updateBlog = asyncHandler(async (req, res) => {
   blog.tags = tags;
   blog.content = content;
   blog.createdAt = createdAt;
+  blog.category = category;
+  blog.readingTime = readingTime;
+  blog.tableContent = tableContent;
 
   const updatedInfo = await blog.save();
   res.json(`${updatedInfo.title} update`);

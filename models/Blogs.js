@@ -17,6 +17,12 @@ const blogsSchema = new mongoose.Schema({
     required: true,
   },
   tags: [{ type: String }],
+  category: {
+    type: String,
+  },
+  readingTime: {
+    type: String,
+  },
   content: {
     type: String,
     required: true,
@@ -25,5 +31,6 @@ const blogsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  tableContent: [{ type: String }],
 });
 module.exports = mongoose.model("Blogs", blogsSchema);
