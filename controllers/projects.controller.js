@@ -10,6 +10,7 @@ const getAllProjects = asyncHandler(async (req, res) => {
 });
 
 const createProject = asyncHandler(async (req, res) => {
+  id;
   const {
     title,
     description,
