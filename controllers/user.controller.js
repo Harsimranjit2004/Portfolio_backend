@@ -30,26 +30,35 @@ const createNewUser = asyncHandler(async (req, res) => {
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-  const { id, username, password, roles } = req.body;
-  if (!id || !username || !Array.isArray(roles) || !roles?.length) {
-    res.status(400).json({ message: "All fields are required" });
+  const { id, username, password } = req.body;
+
+  // Check for required fields
+  if (!id || !username) {
+    return res.status(400).json({ message: "All fields are required" });
   }
+
+  // Find user by ID
   const user = await User.findById(id);
   if (!user) {
-    return res.status(400).json({ message: "user not found" });
+    return res.status(400).json({ message: "User not found" });
   }
-  const duplicate = await User.findOne({ username }).lean().exec();
 
-  if (duplicate && duplicate?._id.toString() != id) {
+  // Check for duplicate username
+  const duplicate = await User.findOne({ username }).lean().exec();
+  if (duplicate && duplicate._id.toString() !== id) {
     return res.status(400).json({ message: "Duplicate username" });
   }
+
+  // Update user details
   user.username = username;
-  user.roles = roles;
+
   if (password) {
     user.password = await bcrypt.hash(password, 10);
   }
-  const updateUser = await user.save();
-  res.json({ message: `updated ${updateUser.username}` });
+
+  // Save updated user
+  const updatedUser = await user.save();
+  return res.json({ message: `Updated ${updatedUser.username}` });
 });
 const deleteUser = asyncHandler(async (req, res) => {
   const { id } = req.body;

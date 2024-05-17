@@ -23,7 +23,7 @@ const updateUserInfo = asyncHandler(async (req, res) => {
     id,
     email,
     phone,
-    linkdin,
+    linkedin,
     twitter,
     kaggle,
     github,
@@ -39,7 +39,7 @@ const updateUserInfo = asyncHandler(async (req, res) => {
   const userInfo = await UserInfo.findById(id);
   (userInfo.email = email),
     (userInfo.phone = phone),
-    (userInfo.linkdin = linkdin),
+    (userInfo.linkedin = linkedin),
     (userInfo.twitter = twitter),
     (userInfo.kaggle = kaggle),
     (userInfo.github = github),
