@@ -18,6 +18,7 @@ app.use(cors(corsOptions));
 
 app.use("/auth", require("./Routes/authRoutes"));
 app.use("/user", require("./Routes/userRoutes"));
+app.use("/userInfo", require("./Routes/userInfoRoutes"));
 app.use("/projects", require("./Routes/projectRoutes"));
 app.use("/interests", require("./Routes/interestRoutes"));
 app.use("/skills", require("./Routes/skillsRoutes"));
