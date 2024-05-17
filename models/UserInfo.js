@@ -39,6 +39,9 @@ const userInfoSchema = new mongoose.Schema({
   image2: {
     type: String,
   },
+  resume: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("UserInfo", userInfoSchema);

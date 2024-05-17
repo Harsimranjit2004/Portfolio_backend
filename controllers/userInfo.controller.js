@@ -9,7 +9,7 @@ const getAllInfo = asyncHandler(async (req, res) => {
   res.status(200).json(info);
 });
 const createUserInfo = asyncHandler(async (req, res) => {
-  const userInfo = await userInfo.create({
+  const userInfo = await UserInfo.create({
     ...req.body,
   });
   if (userInfo) {
@@ -34,21 +34,23 @@ const updateUserInfo = asyncHandler(async (req, res) => {
     AboutPage,
     image1,
     image2,
+    resume,
   } = req.body;
   const userInfo = await UserInfo.findById(id);
   (userInfo.email = email),
-    (user.phone = phone),
-    (user.linkdin = linkdin),
-    (user.twitter = twitter),
-    (user.kaggle = kaggle),
-    (user.github = github),
-    (user.projects = projects),
-    (user.experience = experience),
-    (user.tags = tags),
-    (user.HomeAbout = HomeAbout),
-    (user.AboutPage = AboutPage),
-    (user.image1 = image1),
-    (user.image2 = image2);
+    (userInfo.phone = phone),
+    (userInfo.linkdin = linkdin),
+    (userInfo.twitter = twitter),
+    (userInfo.kaggle = kaggle),
+    (userInfo.github = github),
+    (userInfo.projects = projects),
+    (userInfo.experience = experience),
+    (userInfo.tags = tags),
+    (userInfo.HomeAbout = HomeAbout),
+    (userInfo.AboutPage = AboutPage),
+    (userInfo.image1 = image1),
+    (userInfo.image2 = image2);
+  userInfo.resume = resume;
   const updatedInfo = await userInfo.save();
   res.json({ message: "updated the userInfo" });
 });
