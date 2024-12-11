@@ -16,7 +16,7 @@ const allowedOrigins = [
   "https://e2dd-142-204-17-60.ngrok-free.app",
   "http://10.248.139.182:5173",
   "https://harsimranjit2004.vercel.app",
-
+"https://portfolio-frontend-seven-kappa.vercel.app"
 
 ];
 
