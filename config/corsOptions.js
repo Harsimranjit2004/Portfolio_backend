@@ -14,8 +14,8 @@ const allowedOrigins = [
   // "https://loose-apples-lead.loca.lt",
   "http://10.248.139.182:5173",
   "https://e2dd-142-204-17-60.ngrok-free.app",
-  "http://10.248.139.182:5173"
-  // "https://harsimranjit2004.vercel.app",
+  "http://10.248.139.182:5173",
+  "https://harsimranjit2004.vercel.app",
 
 
 ];
