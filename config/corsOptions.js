@@ -12,8 +12,11 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://a77d-142-204-17-60.ngrok-free.app",
   // "https://loose-apples-lead.loca.lt",
+  "http://10.248.139.182:5173",
+  "https://e2dd-142-204-17-60.ngrok-free.app",
   "http://10.248.139.182:5173"
-  // "https://harsimranjit2004.vercel.app"
+  // "https://harsimranjit2004.vercel.app",
+
 
 ];
 
