@@ -1,10 +1,16 @@
 const User = require("../models/User");
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 
-const login = asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
+const login = async (req, res) => {
+// console.log('h');
+console.log(req.body);
+
+//res.header("Access-Control-Allow-Origin", req.headers.origin);
+//  res.header("Access-Control-Allow-Credentials", "true"); 
+ const { username, password } = req.body;
   // if (!username || !password) {
   //    return res.status(400).json({ message: "All fields are requierd" });
   // }
@@ -25,21 +31,15 @@ const login = asyncHandler(async (req, res) => {
     process.env.ACCESS_TOKEN_SECRET,
     { expiresIn: "15m" }
   );
-  const refreshToken = jwt.sign(
-    {
-      username: foundUser.username,
-    },
-    process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "7d" }
-  );
-  res.cookie("jwt", refreshToken, {
+  
+  res.cookie("jwt",accessToken, {
     httpOnly: true,
-    secure: true,
-    sameSite: "None",
+    secure: false,
+    SameSite: "None",
     maxAge: 60 * 1000,
   });
-  res.json({ accessToken });
-});
+  res.json({message: "login successful"});
+};
 
 const refresh = (req, res) => {
   const cookies = req.cookies;
